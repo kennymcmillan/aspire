@@ -1,0 +1,369 @@
+/*-- scss:defaults --*/
+
+// ============================================================================
+// Aspire Academy Quarto theme
+// Brand palette mirrors aspire_dash (kennymcmillan/aspire_dash).
+// Apply with: format: html: theme: [cosmo, aspire-theme.scss]
+// ============================================================================
+
+// Brand palette
+$aspire-900: #001d3d;   // deep navy (titles, sidebar bg)
+$aspire-800: #002855;
+$aspire-700: #003566;
+$aspire-600: #004185;   // PRIMARY brand blue
+$aspire-500: #0059b3;   // links, highlights
+$aspire-400: #3b82f6;
+$aspire-50:  #eff6ff;   // near-white blue wash
+$gold:       #fbb800;
+$slate-50:   #f8fafc;
+$slate-100:  #f1f5f9;   // canvas
+$slate-200:  #e2e8f0;
+$slate-300:  #cbd5e1;
+$slate-700:  #334155;
+$slate-900:  #0f172a;
+
+// Bootstrap overrides
+$primary:              $aspire-600 !default;
+$secondary:            $aspire-900 !default;
+$success:              #16a34a !default;
+$info:                 $aspire-400 !default;
+$warning:              $gold !default;
+$danger:               #dc2626 !default;
+
+$body-bg:              white !default;
+$body-color:           $slate-900 !default;
+$link-color:           $aspire-500 !default;
+$link-hover-color:     $aspire-700 !default;
+$border-color:         $slate-200 !default;
+
+// Typography
+$font-family-sans-serif: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif !default;
+$font-family-monospace:  'JetBrains Mono', 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace !default;
+$headings-color:         $aspire-900 !default;
+$headings-font-weight:   600 !default;
+$h1-font-size:           2rem !default;
+$h2-font-size:           1.5rem !default;
+$h3-font-size:           1.2rem !default;
+
+// Code
+$code-color:             $aspire-700 !default;
+$code-bg:                $aspire-50 !default;
+
+// Borders & shadows
+$enable-rounded:         true;
+$border-radius:          0.5rem !default;
+$border-radius-lg:       0.75rem !default;
+
+
+/*-- scss:rules --*/
+// ============================================================================
+// Aspire Academy report styles — soft, crisp, modern
+// ============================================================================
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+body {
+  background: $slate-100;
+  font-feature-settings: 'cv11', 'ss01';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Center the content + give it a card-like surface
+main.content {
+  background: white;
+  padding: 2.25rem 2.5rem 2rem;
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px -2px rgba(0, 31, 61, 0.06);
+  border: 1px solid $slate-200;
+  border-top: none;
+  animation: aspire-fade 0.35s ease-out;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Title block — branded gradient banner with logo
+#title-block-header.quarto-title-block.default {
+  background: linear-gradient(135deg, $aspire-900 0%, $aspire-700 55%, $aspire-600 100%);
+  color: white;
+  padding: 2.5rem 2.5rem 2rem;
+  border-radius: 12px 12px 0 0;
+  border: 1px solid $slate-200;
+  border-bottom: none;
+  margin-top: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1100px;
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 2rem;
+    transform: translateY(-50%);
+    width: 90px;
+    height: 90px;
+    background: url('aspire-logo.png') no-repeat center / contain;
+    opacity: 0.95;
+    pointer-events: none;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.2));
+  }
+
+  .title {
+    color: white;
+    font-weight: 700;
+    font-size: 2rem;
+    margin: 0;
+    line-height: 1.2;
+    padding-right: 110px;
+  }
+
+  .subtitle {
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 1.05rem;
+    font-weight: 400;
+    margin-top: 0.5rem;
+    padding-right: 110px;
+  }
+
+  .quarto-title-meta, .quarto-title-meta-contents {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.85rem;
+    margin-top: 1.25rem;
+
+    .quarto-title-meta-heading {
+      color: rgba(255, 255, 255, 0.65);
+      text-transform: uppercase;
+      font-size: 0.7rem;
+      letter-spacing: 0.05em;
+      font-weight: 600;
+    }
+  }
+}
+
+// Headings — accent bar on the left
+h1, .h1 { color: $aspire-900; }
+
+h2, .h2 {
+  position: relative;
+  padding-left: 0.85rem;
+  margin-top: 2.75rem;
+  margin-bottom: 1rem;
+  color: $aspire-900;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.3rem;
+    bottom: 0.3rem;
+    width: 4px;
+    background: linear-gradient(180deg, $aspire-500 0%, $gold 100%);
+    border-radius: 2px;
+  }
+}
+
+h3, .h3 {
+  color: $aspire-700;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+// Tables — soft alternating bands, branded header
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 1.25rem 0;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.92rem;
+  border: 1px solid $slate-200;
+  border-radius: 8px;
+  overflow: hidden;
+
+  thead tr {
+    background: $aspire-900;
+    color: white;
+
+    th {
+      padding: 0.75rem 1rem;
+      font-weight: 600;
+      text-align: left;
+      border: none;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+  }
+
+  tbody tr {
+    border-bottom: 1px solid $slate-100;
+    transition: background-color 0.12s ease-out;
+
+    &:nth-child(even) td { background: $aspire-50; }
+    &:hover td { background: rgba($aspire-400, 0.08); }
+    &:last-child { border-bottom: none; }
+
+    td {
+      padding: 0.6rem 1rem;
+      border: none;
+      vertical-align: middle;
+      color: $slate-900;
+    }
+  }
+}
+
+// pandas df-print: paged renders to <table class="dataframe"> — same styles apply
+table.dataframe { @extend table; }
+
+// Callouts — soft branded
+.callout {
+  border-radius: 8px;
+  margin: 1.5rem 0;
+  border-left-width: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.callout.callout-style-default .callout-header {
+  font-weight: 600;
+  background: transparent;
+}
+
+.callout-note {
+  border-left-color: $aspire-500;
+  background: $aspire-50;
+  .callout-icon::before { color: $aspire-500; }
+}
+
+.callout-tip {
+  border-left-color: #16a34a;
+  background: #f0fdf4;
+}
+
+.callout-warning, .callout-caution {
+  border-left-color: $gold;
+  background: rgba($gold, 0.08);
+}
+
+.callout-important {
+  border-left-color: #dc2626;
+  background: #fef2f2;
+}
+
+// Code
+pre.sourceCode {
+  background: $aspire-50;
+  border-left: 3px solid $aspire-500;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  font-size: 0.85rem;
+  margin: 1rem 0;
+}
+
+code:not(pre code) {
+  background: $aspire-50;
+  color: $aspire-700;
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-weight: 500;
+}
+
+// Links
+a {
+  color: $aspire-500;
+  text-decoration: none;
+  transition: color 0.12s ease-out;
+
+  &:hover {
+    color: $aspire-700;
+    text-decoration: underline;
+    text-decoration-color: rgba($aspire-700, 0.4);
+    text-underline-offset: 3px;
+  }
+}
+
+// TOC
+#TOC, nav#TOC, .quarto-secondary-nav-contents {
+  font-size: 0.88rem;
+
+  a {
+    color: $slate-700;
+    border-left: 2px solid transparent;
+    padding-left: 0.6rem;
+    transition: border-color 0.15s, color 0.15s;
+  }
+
+  a:hover, a.active {
+    color: $aspire-600;
+    border-left-color: $aspire-500;
+  }
+}
+
+// Aspire footer (rendered via include-after-body)
+.aspire-footer {
+  max-width: 1100px;
+  margin: 1.5rem auto 2rem;
+  padding: 1.25rem 2rem 1.5rem;
+  background: white;
+  border: 1px solid $slate-200;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.82rem;
+  color: $slate-700;
+
+  .aspire-footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+
+    img { height: 28px; width: auto; }
+    strong { color: $aspire-900; font-weight: 600; }
+  }
+
+  .aspire-footer-meta { color: $slate-700; opacity: 0.8; }
+  .aspire-footer-meta strong { color: $aspire-700; }
+}
+
+// Page enter animation
+@keyframes aspire-fade {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+// Code-tools / fold buttons — softer
+.code-tools-button, button.code-fold-btn {
+  color: $aspire-500 !important;
+  &:hover { color: $aspire-700 !important; }
+}
+
+// Print
+@media print {
+  body { background: white !important; }
+  main.content { box-shadow: none !important; border: none !important; padding: 0 !important; }
+  #title-block-header.quarto-title-block.default {
+    background: $aspire-900 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  table thead tr {
+    background: $aspire-900 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  table tbody tr:nth-child(even) td {
+    background: $aspire-50 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .aspire-footer { box-shadow: none !important; }
+}

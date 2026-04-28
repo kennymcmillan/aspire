@@ -1,0 +1,7 @@
+_freeze/
+.quarto/
+*_files/
+*.html
+!index.html
+.DS_Store
+Thumbs.db
