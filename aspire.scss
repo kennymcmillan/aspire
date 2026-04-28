@@ -78,12 +78,12 @@ body {
   column-gap: 1.4rem;
   row-gap: 0.15rem;
   align-items: center;
-  background: white;
+  background: transparent;
   color: $aspire-900;
   padding: 1.25rem 1.75rem 1rem;
-  border: 1px solid $slate-200;
+  border: none;
   border-bottom: 2px solid $aspire-600;
-  margin: 1.5rem auto 0;
+  margin: 1.5rem auto 0.5rem;
   max-width: 1100px;
 
   &::before {
@@ -139,7 +139,6 @@ main.content {
   background: white;
   padding: 1.25rem 1.75rem 1.5rem;
   border: 1px solid $slate-200;
-  border-top: none;
   max-width: 1100px;
   margin-left: auto;
   margin-right: auto;
