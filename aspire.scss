@@ -1,20 +1,20 @@
 /*-- scss:defaults --*/
 
 // ============================================================================
-// Aspire Academy Quarto theme
+// Aspire Academy Quarto theme â€” sharp, modern, report-style
 // Brand palette mirrors aspire_dash (kennymcmillan/aspire_dash).
 // Apply with: format: aspire-html: default
 // ============================================================================
 
 // Brand palette
-$aspire-900: #001d3d;   // deep navy
+$aspire-900: #001d3d;
 $aspire-800: #002855;
 $aspire-700: #003566;
-$aspire-600: #004185;   // PRIMARY brand blue
-$aspire-500: #0059b3;   // links, accents
+$aspire-600: #004185;
+$aspire-500: #0059b3;
 $aspire-400: #3b82f6;
-$aspire-100: #dbeafe;   // pale blue
-$aspire-50:  #eff6ff;   // near-white blue wash
+$aspire-100: #dbeafe;
+$aspire-50:  #eff6ff;
 $gold:       #fbb800;
 $slate-50:   #f8fafc;
 $slate-100:  #f1f5f9;
@@ -31,34 +31,34 @@ $info:                 $aspire-400 !default;
 $warning:              $gold !default;
 $danger:               #dc2626 !default;
 
-$body-bg:              white !default;
+$body-bg:              $slate-100 !default;
 $body-color:           $slate-900 !default;
 $link-color:           $aspire-500 !default;
 $link-hover-color:     $aspire-700 !default;
 $border-color:         $slate-200 !default;
 
 // Typography
-$font-family-sans-serif: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif !default;
-$font-family-monospace:  'JetBrains Mono', 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace !default;
+$font-family-sans-serif: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !default;
+$font-family-monospace:  'JetBrains Mono', 'SF Mono', SFMono-Regular, Consolas, monospace !default;
 $headings-color:         $aspire-900 !default;
 $headings-font-weight:   600 !default;
-$h1-font-size:           1.65rem !default;
-$h2-font-size:           1.4rem !default;
-$h3-font-size:           1.15rem !default;
+$h1-font-size:           1.55rem !default;
+$h2-font-size:           1.15rem !default;
+$h3-font-size:           1rem !default;
 
 // Code
 $code-color:             $aspire-700 !default;
 $code-bg:                $aspire-50 !default;
 
-// Borders
-$enable-rounded:         true;
-$border-radius:          0.5rem !default;
-$border-radius-lg:       0.75rem !default;
+// Sharp, no rounding
+$enable-rounded:         false;
+$border-radius:          0 !default;
+$border-radius-lg:       0 !default;
 
 
 /*-- scss:rules --*/
 // ============================================================================
-// Aspire Academy report styles â€” clean, sharp, minimal
+// Sharp, angular report styles â€” flat, no soft shadows, hairline borders
 // ============================================================================
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
@@ -68,197 +68,183 @@ body {
   font-feature-settings: 'cv11', 'ss01';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
 }
 
-// Title block â€” WHITE surface, logo top-left, title to its right,
-// thin light-blue gradient separator bar at the bottom.
+// Title block â€” flat white, logo top-left, sharp 2px aspire-blue underline
 #title-block-header.quarto-title-block.default {
   display: grid;
-  grid-template-columns: 80px 1fr;
-  column-gap: 1.5rem;
-  row-gap: 0.25rem;
-  align-items: start;
+  grid-template-columns: 64px 1fr;
+  column-gap: 1.25rem;
+  row-gap: 0.15rem;
+  align-items: center;
   background: white;
   color: $aspire-900;
-  padding: 1.75rem 2.5rem 1.5rem;
-  border-radius: 12px 12px 0 0;
+  padding: 1.25rem 1.75rem 1rem;
   border: 1px solid $slate-200;
-  border-bottom: none;
-  margin: 2rem auto 0;
+  border-bottom: 2px solid $aspire-600;
+  margin: 1.5rem auto 0;
   max-width: 1100px;
-  position: relative;
 
-  // Logo â€” pseudo-element so we don't depend on Quarto's title HTML structure
   &::before {
     content: '';
     grid-column: 1;
     grid-row: 1 / span 4;
-    width: 70px;
-    height: 70px;
+    width: 56px;
+    height: 56px;
     background: url('data:image/png;base64,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') no-repeat center / contain;
     align-self: center;
   }
 
-  // Thin gradient separator at the bottom â€” Aspire blue â†’ gold
-  &::after {
-    content: '';
-    position: absolute;
-    left: 1.5rem;
-    right: 1.5rem;
-    bottom: 0;
-    height: 3px;
-    background: linear-gradient(90deg, $aspire-500 0%, $aspire-400 55%, $gold 100%);
-    border-radius: 2px;
-    opacity: 0.85;
-  }
-
-  // Push title content into column 2
   > * { grid-column: 2; }
 
   .title, h1.title {
     color: $aspire-900;
     font-weight: 700;
-    font-size: 1.65rem;
+    font-size: 1.5rem;
     margin: 0;
     line-height: 1.2;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.015em;
   }
 
   .subtitle, p.subtitle {
     color: $slate-700;
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 400;
-    margin: 0.25rem 0 0;
+    margin: 0.15rem 0 0;
     line-height: 1.4;
   }
 
   .quarto-title-meta {
     color: $slate-700;
-    font-size: 0.78rem;
-    margin-top: 0.85rem;
+    font-size: 0.72rem;
+    margin-top: 0.5rem;
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5rem;
+    gap: 1.25rem;
 
     .quarto-title-meta-heading {
       color: $aspire-700;
       text-transform: uppercase;
-      font-size: 0.68rem;
-      letter-spacing: 0.06em;
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
       font-weight: 600;
-      margin-bottom: 0.15rem;
     }
-
-    .quarto-title-meta-contents {
-      color: $slate-900;
-      font-weight: 500;
-    }
+    .quarto-title-meta-contents { color: $slate-900; font-weight: 500; }
   }
 }
 
-// Content surface â€” sits flush below the title block
+// Content surface â€” flush below title, hairline border, NO shadow, NO radius
 main.content {
   background: white;
-  padding: 1.75rem 2.5rem 2rem;
-  border-radius: 0 0 12px 12px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px -2px rgba(0, 31, 61, 0.06);
+  padding: 1.25rem 1.75rem 1.5rem;
   border: 1px solid $slate-200;
   border-top: none;
-  animation: aspire-fade 0.35s ease-out;
   max-width: 1100px;
   margin-left: auto;
   margin-right: auto;
 }
 
-// Headings â€” h2 has accent bar
+// Headings â€” minimal, slim accent on h2 only
 h1, .h1 { color: $aspire-900; }
 
 h2, .h2 {
   position: relative;
-  padding-left: 0.85rem;
-  margin-top: 2.25rem;
-  margin-bottom: 0.85rem;
+  padding-left: 0.65rem;
+  margin-top: 1.85rem;
+  margin-bottom: 0.65rem;
   color: $aspire-900;
   font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: -0.005em;
 
   &::before {
     content: '';
     position: absolute;
     left: 0;
-    top: 0.3rem;
-    bottom: 0.3rem;
-    width: 3px;
-    background: linear-gradient(180deg, $aspire-500 0%, $gold 100%);
-    border-radius: 2px;
+    top: 0.25rem;
+    bottom: 0.25rem;
+    width: 2px;
+    background: $aspire-600;
   }
 }
 
 h3, .h3 {
   color: $aspire-700;
   font-weight: 600;
-  margin-top: 1.6rem;
-  margin-bottom: 0.6rem;
+  font-size: 0.92rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 1.3rem;
+  margin-bottom: 0.5rem;
 }
 
-// Tables â€” soft, minimal, alternating bands
+// Tables â€” sharp, hairline-bordered, alternating bands
 table {
   width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  margin: 1rem 0 1.25rem;
+  border-collapse: collapse;
+  margin: 0.6rem 0 1rem;
   font-variant-numeric: tabular-nums;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   border: 1px solid $slate-200;
-  border-radius: 8px;
-  overflow: hidden;
 
   thead tr {
     background: $aspire-900;
     color: white;
 
     th {
-      padding: 0.7rem 1rem;
+      padding: 0.55rem 0.85rem;
       font-weight: 600;
       text-align: left;
       border: none;
-      font-size: 0.78rem;
+      font-size: 0.7rem;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.06em;
+      vertical-align: middle;
     }
   }
 
   tbody tr {
     border-bottom: 1px solid $slate-100;
-    transition: background-color 0.12s ease-out;
+    transition: background-color 0.1s ease-out;
 
-    &:nth-child(even) td { background: $aspire-50; }
-    &:hover td { background: rgba($aspire-400, 0.08); }
+    &:nth-child(even) td { background: $slate-50; }
+    &:hover td { background: $aspire-50; }
     &:last-child { border-bottom: none; }
 
     td {
-      padding: 0.55rem 1rem;
+      padding: 0.45rem 0.85rem;
       border: none;
       vertical-align: middle;
       color: $slate-900;
     }
+
+    // First column â€” bold (athlete name etc.)
+    td:first-child { font-weight: 600; color: $aspire-900; }
   }
 }
 
 table.dataframe { @extend table; }
 
-// Callouts
+// Hide pandas/Quarto df-print numeric index columns
+// (df.to_html includes a leading <th></th> empty header for the index)
+table thead th:empty { display: none; }
+table.dataframe tbody th:first-child { display: none; }
+
+// Paged dataframe wrapper Quarto adds â€” strip the extra padding
+.cell-output-display .dataframe { margin: 0; }
+
+// Callouts â€” sharp left border, no radius
 .callout {
-  border-radius: 8px;
-  margin: 1.25rem 0;
-  border-left-width: 4px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  border-radius: 0;
+  margin: 1rem 0;
+  border-left-width: 3px;
+  border-top: 1px solid $slate-200;
+  border-right: 1px solid $slate-200;
+  border-bottom: 1px solid $slate-200;
+  box-shadow: none;
 }
-
-.callout.callout-style-default .callout-header {
-  font-weight: 600;
-  background: transparent;
-}
-
+.callout.callout-style-default .callout-header { font-weight: 600; background: transparent; }
 .callout-note    { border-left-color: $aspire-500; background: $aspire-50; }
 .callout-tip     { border-left-color: #16a34a; background: #f0fdf4; }
 .callout-warning, .callout-caution {
@@ -267,22 +253,21 @@ table.dataframe { @extend table; }
 }
 .callout-important { border-left-color: #dc2626; background: #fef2f2; }
 
-// Code
+// Code â€” flat, clean
 pre.sourceCode {
-  background: $aspire-50;
+  background: $slate-50;
+  border: 1px solid $slate-200;
   border-left: 3px solid $aspire-500;
-  border-radius: 8px;
-  padding: 0.85rem 1.1rem;
-  font-size: 0.85rem;
-  margin: 0.85rem 0;
+  padding: 0.75rem 1rem;
+  font-size: 0.8rem;
+  margin: 0.75rem 0;
 }
 
 code:not(pre code) {
   background: $aspire-50;
   color: $aspire-700;
-  padding: 0.1rem 0.4rem;
-  border-radius: 4px;
-  font-size: 0.9em;
+  padding: 0.05rem 0.35rem;
+  font-size: 0.88em;
   font-weight: 500;
 }
 
@@ -290,70 +275,49 @@ code:not(pre code) {
 a {
   color: $aspire-500;
   text-decoration: none;
-  transition: color 0.12s ease-out;
-
-  &:hover {
-    color: $aspire-700;
-    text-decoration: underline;
-    text-decoration-color: rgba($aspire-700, 0.4);
-    text-underline-offset: 3px;
-  }
+  &:hover { color: $aspire-700; text-decoration: underline; text-underline-offset: 2px; }
 }
 
 // TOC sidebar
 #TOC, nav#TOC, .quarto-secondary-nav-contents {
-  font-size: 0.85rem;
-
+  font-size: 0.8rem;
   a {
     color: $slate-700;
     border-left: 2px solid transparent;
-    padding-left: 0.55rem;
-    transition: border-color 0.15s, color 0.15s;
+    padding-left: 0.5rem;
   }
-
-  a:hover, a.active {
-    color: $aspire-600;
-    border-left-color: $aspire-500;
-  }
+  a:hover, a.active { color: $aspire-600; border-left-color: $aspire-500; }
 }
 
-// Footer (rendered via include-after-body)
+// Footer â€” flat, hairline border
 .aspire-footer {
   max-width: 1100px;
-  margin: 1.25rem auto 1.75rem;
-  padding: 1rem 2rem 1.1rem;
+  margin: 0 auto 1.5rem;
+  padding: 0.75rem 1.75rem;
   background: white;
   border: 1px solid $slate-200;
-  border-radius: 12px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  border-top: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 0.9rem;
-  font-size: 0.8rem;
+  gap: 0.75rem;
+  font-size: 0.72rem;
   color: $slate-700;
 
   .aspire-footer-brand {
     display: flex;
     align-items: center;
-    gap: 0.55rem;
+    gap: 0.5rem;
 
-    img { height: 26px; width: auto; }
+    img { height: 22px; width: auto; }
     strong { color: $aspire-900; font-weight: 600; }
   }
 
-  .aspire-footer-meta { color: $slate-700; opacity: 0.8; }
+  .aspire-footer-meta { color: $slate-700; opacity: 0.85; }
   .aspire-footer-meta strong { color: $aspire-700; }
 }
 
-// Page enter
-@keyframes aspire-fade {
-  from { opacity: 0; transform: translateY(6px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-// Code-tools / fold buttons
 .code-tools-button, button.code-fold-btn {
   color: $aspire-500 !important;
   &:hover { color: $aspire-700 !important; }
@@ -362,10 +326,11 @@ a {
 // Print
 @media print {
   body { background: white !important; }
-  main.content { box-shadow: none !important; border: none !important; padding: 0 !important; }
+  main.content { padding: 0 !important; border: none !important; }
   #title-block-header.quarto-title-block.default {
     background: white !important;
     border: none !important;
+    border-bottom: 2px solid $aspire-600 !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
@@ -375,7 +340,7 @@ a {
     print-color-adjust: exact;
   }
   table tbody tr:nth-child(even) td {
-    background: $aspire-50 !important;
+    background: $slate-50 !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
