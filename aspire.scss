@@ -177,6 +177,41 @@ section, .section, .level1, .level2, .level3,
   background: transparent !important;
 }
 
+// Section rhythm — thin slate divider between successive level-2 sections
+section.level2 + section.level2 {
+  border-top: 1px solid $slate-200;
+  padding-top: 1.25rem;
+  margin-top: 1.75rem;
+}
+
+// Rank pills — gold for top-10, blue for top-50, neutral bold otherwise
+.rank-pill {
+  display: inline-block;
+  padding: 0.08rem 0.45rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+.rank-top10 {
+  background: #fef3c7;
+  color: #78350f;
+  border-left: 2px solid $gold;
+}
+.rank-top50 {
+  background: $aspire-50;
+  color: $aspire-700;
+  border-left: 2px solid $aspire-500;
+}
+.rank-other {
+  color: $slate-900;
+  font-weight: 600;
+}
+
+// Sparkline cell — keep thin
+table .trend-cell { width: 80px; padding-right: 0.4rem !important; }
+table .trend-cell svg { display: block; }
+
 h3, .h3 {
   color: $aspire-700;
   font-weight: 600;
