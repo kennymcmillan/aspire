@@ -154,8 +154,11 @@ h2, .h2 {
   margin-top: 1.85rem;
   margin-bottom: 0.65rem;
   color: $aspire-900;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1rem;
   letter-spacing: -0.005em;
 
   &::before {
@@ -167,6 +170,12 @@ h2, .h2 {
     width: 2px;
     background: $aspire-600;
   }
+}
+
+// Strip any inherited section/wrapper backgrounds around headings
+section, .section, .level1, .level2, .level3,
+.cell, .cell-output, .cell-output-display {
+  background: transparent !important;
 }
 
 h3, .h3 {
