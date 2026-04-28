@@ -8,9 +8,7 @@ contributes:
       theme: [cosmo, aspire.scss]
       include-after-body: aspire-footer.html
       embed-resources: true
-      toc: true
-      toc-location: left
-      toc-depth: 2
+      toc: false
       smooth-scroll: true
       anchor-sections: true
       code-fold: true
@@ -18,3 +16,4 @@ contributes:
       fig-width: 10
       fig-height: 5
       df-print: paged
+      page-layout: article
